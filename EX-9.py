@@ -1,3 +1,4 @@
+#EM & K-means Algorithm
 from sklearn.cluster import KMeans
 from sklearn import preprocessing
 from sklearn.mixture import GaussianMixture
@@ -7,7 +8,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load dataset
 dataset = load_iris()
 
 X = pd.DataFrame(dataset.data)
@@ -16,11 +16,9 @@ X.columns = ['Sepal_Length', 'Sepal_Width', 'Petal_Length', 'Petal_Width']
 y = pd.DataFrame(dataset.target)
 y.columns = ['Targets']
 
-# Plot setup
 plt.figure(figsize=(14, 7))
 colormap = np.array(['red', 'lime', 'black'])
 
-# Real data plot
 plt.subplot(1, 3, 1)
 plt.scatter(
     X.Petal_Length,
@@ -30,7 +28,6 @@ plt.scatter(
 )
 plt.title('Real')
 
-# K-Means clustering
 plt.subplot(1, 3, 2)
 
 model = KMeans(n_clusters=3, random_state=0, n_init=10)
@@ -46,7 +43,6 @@ plt.scatter(
 )
 plt.title('KMeans')
 
-# GMM (EM Algorithm)
 scaler = preprocessing.StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
