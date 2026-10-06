@@ -1,4 +1,12 @@
 %BFS in prolog
+edge(a,b). 
+edge(a,c). 
+edge(b,d). 
+edge(b,e). 
+edge(c,f). 
+edge(e,g). 
+edge(f,g). 
+
 bfs(Start, Goal, Path) :- 
     bfs_search([[Start]], Goal, Result), 
     reverse(Result, Path). 

@@ -14,13 +14,16 @@ heuristic(d,5).
 heuristic(e,2). 
 heuristic(f,1). 
 heuristic(g,0). 
+
 astar(Start, Goal, Path) :- 
-search([[Start]], Goal, RevPath), 
-reverse(RevPath, Path). 
-search([[Goal|Rest]|_], Goal, [Goal|Rest]). 
+    search([[Start]], Goal, RevPath), 
+    reverse(RevPath, Path). 
+    
+search([[Goal|Rest]|_], Goal, [Goal|Rest]).
+
 search([[Node|Rest]|Others], Goal, Path) :- 
-findall([Next,Node|Rest], 
-edge(Node,Next,_), 
-NewPaths), 
-append(Others, NewPaths, Queue), 
-search(Queue, Goal, Path).
+    findall([Next,Node|Rest], 
+    edge(Node,Next,_), 
+    NewPaths), 
+    append(Others, NewPaths, Queue), 
+    search(Queue, Goal, Path).
